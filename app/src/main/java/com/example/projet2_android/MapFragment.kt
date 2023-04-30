@@ -1,8 +1,10 @@
+import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import com.example.projet2_android.DetailStoreActivity
 import com.example.projet2_android.R
 import com.example.projet2_android.Store
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -10,6 +12,7 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.gson.Gson
 import com.google.gson.JsonObject
@@ -23,6 +26,7 @@ import java.net.URL
 class MapFragment : Fragment(), OnMapReadyCallback {
 
     private lateinit var mMap: GoogleMap
+    private val markerToStoreMap = HashMap<Marker, Store>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,6 +42,14 @@ class MapFragment : Fragment(), OnMapReadyCallback {
 
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
+        mMap.setOnInfoWindowClickListener { marker ->
+            val store = markerToStoreMap[marker]
+            store?.let {
+                val intent = Intent(context, DetailStoreActivity::class.java)
+                intent.putExtra("store", it)
+                startActivity(intent)
+            }
+        }
         fetchStoresAndAddMarkers()
     }
 
@@ -60,12 +72,13 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     private fun addMarkersToMap(stores: List<Store>) {
         for (store in stores) {
             val position = LatLng(store.latitude, store.longitude)
-            mMap.addMarker(
+            val marker = mMap.addMarker(
                 MarkerOptions()
                     .position(position)
                     .title(store.name)
                     .snippet(store.description)
             )
+            markerToStoreMap[marker] = store
         }
         // Zoom sur la France
         val franceLatLng = LatLng(46.603354, 1.888334)

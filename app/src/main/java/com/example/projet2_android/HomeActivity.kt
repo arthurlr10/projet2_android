@@ -12,8 +12,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 
-class HomeActivity : AppCompatActivity() {
-
+class HomeActivity : BaseActivity() {
     private lateinit var offresFragment: OffersFragment
     private lateinit var MapFragment: MapFragment
     private lateinit var CarteFragment: CarteFragment
@@ -21,7 +20,9 @@ class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
+        showAccount()
 
+        setHeaderTitle("HyperMax")
         // Ajouter le fragment initial
         supportFragmentManager.beginTransaction()
             .add(R.id.fragment_container, CarteFragment())

@@ -9,13 +9,14 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 
-class InscriptionActivity : AppCompatActivity() {
+class InscriptionActivity : BaseActivity() {
 
     private lateinit var sharedPref: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_inscription)
+        setHeaderTitle("Création de compte")
 
         sharedPref = getSharedPreferences("inscription", Context.MODE_PRIVATE)
 

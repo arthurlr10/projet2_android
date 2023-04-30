@@ -5,13 +5,11 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <TextView
+    <include
+        android:id="@+id/header"
+        layout="@layout/layout_header"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Inscription"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="16dp"/>
+        android:layout_height="wrap_content" />
 
     <EditText
         android:id="@+id/nom_edittext"
