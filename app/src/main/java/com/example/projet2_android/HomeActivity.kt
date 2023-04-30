@@ -1,5 +1,6 @@
 package com.example.projet2_android
 
+import MapFragment
 import OffersFragment
 import android.content.Context
 import android.content.Intent
@@ -14,8 +15,8 @@ import androidx.fragment.app.FragmentManager
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var offresFragment: OffersFragment
-    private lateinit var magasinsFragment: MagasinsFragment
-    private lateinit var cartesFragment: CartesFragment
+    private lateinit var MapFragment: MapFragment
+    private lateinit var CarteFragment: CarteFragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,13 +24,13 @@ class HomeActivity : AppCompatActivity() {
 
         // Ajouter le fragment initial
         supportFragmentManager.beginTransaction()
-            .add(R.id.fragment_container, NomFragment())
+            .add(R.id.fragment_container, CarteFragment())
             .commit()
 
         // Initialiser les fragments
         offresFragment = OffersFragment()
-        magasinsFragment = MagasinsFragment()
-        cartesFragment = CartesFragment()
+        MapFragment = MapFragment()
+        CarteFragment = CarteFragment()
 
         // Récupérer les références des boutons
         val offresButton = findViewById<Button>(R.id.offres_button)
@@ -38,8 +39,8 @@ class HomeActivity : AppCompatActivity() {
 
         // Ajouter les écouteurs d'événements pour les boutons
         offresButton.setOnClickListener { remplacerFragment(offresFragment) }
-        magasinsButton.setOnClickListener { remplacerFragment(magasinsFragment) }
-        cartesButton.setOnClickListener { remplacerFragment(cartesFragment) }
+        magasinsButton.setOnClickListener { remplacerFragment(MapFragment) }
+        cartesButton.setOnClickListener { remplacerFragment(CarteFragment) }
     }
 
     private fun remplacerFragment(fragment: Fragment) {

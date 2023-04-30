@@ -19,7 +19,7 @@ private const val ARG_PARAM2 = "param2"
  * Use the [NomFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class NomFragment : Fragment() {
+class CarteFragment : Fragment() {
 
     private lateinit var nomPrenomTextView: TextView
     private lateinit var sharedPref: SharedPreferences

@@ -1,5 +1,6 @@
 package com.example.projet2_android
 
+import MapFragment
 import OffersFragment
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -20,7 +21,7 @@ class FragmentsActivity : AppCompatActivity() {
 
         when (fragmentName) {
             "cartes" -> {
-                val cartesFragment = CartesFragment()
+                val cartesFragment = MapFragment()
                 supportFragmentManager.beginTransaction()
                     .replace(R.id.fragment_container_view, cartesFragment)
                     .commit()

@@ -1,5 +1,6 @@
 package com.example.projet2_android
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -10,6 +11,17 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        // Vérifier si l'utilisateur est inscrit
+        val sharedPref = getSharedPreferences("inscription", Context.MODE_PRIVATE)
+        val isUserRegistered = sharedPref.getString("nom", null) != null
+
+        // Si l'utilisateur est inscrit, démarrez HomeActivity et terminez MainActivity
+        if (isUserRegistered) {
+            val intent = Intent(this, HomeActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
         val scanButton = findViewById<Button>(R.id.scan_button)
         scanButton.setOnClickListener {
         }
@@ -18,7 +30,6 @@ class MainActivity : AppCompatActivity() {
         registerButton.setOnClickListener {
             val intent = Intent(this, InscriptionActivity::class.java)
             startActivity(intent)
-
         }
     }
 }
