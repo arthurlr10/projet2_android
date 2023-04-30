@@ -7,6 +7,12 @@
     android:padding="16dp"
     tools:context=".DetailStoreActivity">
 
+    <include
+        android:id="@+id/header"
+        layout="@layout/layout_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

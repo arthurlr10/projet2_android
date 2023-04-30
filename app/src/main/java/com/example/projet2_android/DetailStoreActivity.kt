@@ -4,17 +4,16 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
-import com.example.projet2_android.R
-import com.example.projet2_android.Store
 
-class DetailStoreActivity : AppCompatActivity() {
+
+class DetailStoreActivity : BaseActivity() {
 
     private lateinit var storeImageView: ImageView
     private lateinit var addressTextView: TextView
     private lateinit var zipcodeTextView: TextView
     private lateinit var descriptionTextView: TextView
+
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -46,19 +46,10 @@ open class BaseActivity : AppCompatActivity(){
         Log.i("Epsi G2","################ finish :"+javaClass.simpleName)
     }
 
-    fun setHeaderTitle(title: String?, imageResId: Int = 0) {
+    fun setHeaderTitle(title: String?) {
         val textView = findViewById<TextView>(R.id.textViewTitle)
-        textView.text = title
-
-        val imageView = findViewById<ImageView>(R.id.imagePersonne)
-        if (imageResId != 0) {
-            imageView.setImageResource(imageResId)
-            imageView.visibility = View.VISIBLE
-        } else {
-            imageView.visibility = View.GONE
-        }
+        textView.setText(title)
     }
-
 
     fun showBack() {
         val imageViewBack = findViewById<ImageView>(R.id.imageViewBack)
